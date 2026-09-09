@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT US | AHBS INTERNATIONAL</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="page-seven">
+
+    <div class="container animate-fade-in">
+        <nav class="page-navigation" aria-label="Main navigation">
+            <a href="index.html">HOME</a>
+            <a href="page2.html">ABOUT US</a>
+            <a href="page3.html">SERVICES</a>
+            <a href="page5.html">INDUSTRIES</a>
+            <a href="page6.html">PROJECT EXECUTION</a>
+            <a href="page7.html" aria-current="page">CONTACT</a>
+        </nav>
+        
+        <!-- Header / Title -->
+        <header class="header">
+            <p class="title-kicker">CONTACT / AHBS INTERNATIONAL</p>
+            <h1 class="main-page-title">GET <span>IN TOUCH</span></h1>
+            <p class="tagline">CONNECT WITH OUR ENGINEERING EXPERTS</p>
+        </header>
+
+        <!-- Main Contact Information Cards -->
+        <section class="contact-cards-container">
+            
+            <a href="https://wa.me/923150270508" class="contact-card" target="_blank" rel="noopener noreferrer" aria-label="Contact AHBS International on WhatsApp">
+                <div class="card-icon">📞</div>
+                <div class="card-info">
+                    <h3>PHONE NUMBER</h3>
+                    <p>+92 315 0270508</p>
+                </div>
+            </a>
+
+            <a href="mailto:ahbsinternational@gmail.com" class="contact-card" target="_blank" rel="noopener noreferrer" aria-label="Email AHBS International">
+                <div class="card-icon">✉️</div>
+                <div class="card-info">
+                    <h3>EMAIL ADDRESS</h3>
+                    <p>ahbsinternational@gmail.com</p>
+                </div>
+            </a>
+
+            <div class="contact-card">
+                <div class="card-icon">📍</div>
+                <div class="card-info">
+                    <h3>LOCATION</h3>
+                    <p>Pakistan</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Contact Message Form -->
+        <section class="contact-form-section" aria-labelledby="contact-form-heading">
+            <div class="contact-form-heading">
+                <p class="form-kicker">Let's Start a Conversation</p>
+                <h2 id="contact-form-heading" class="sub-heading">Have a project in mind? Tell us about it and we'll get back to you as soon as possible.</h2>
+            </div>
+
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="41c2a06f-42a9-431a-a9a1-384c1116d898">
+                <input type="hidden" name="_subject" value="New contact form message - AHBS International">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_template" value="table">
+                <div class="form-field">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder=" Enter your name" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Your email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="Email" required>
+                </div>
+
+                <div class="form-field form-field-full">
+                    <label for="subject">Your subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="How can we help?" required>
+                </div>
+
+                <div class="form-field form-field-full">
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell us about your project or requirements" required></textarea>
+                </div>
+
+                <button class="send-message-button" type="submit">
+                    <span class="button-label">SEND MESSAGE</span>
+                    <span class="button-arrow" aria-hidden="true">&#8594;</span>
+                    <span class="button-spinner" aria-hidden="true"></span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Core Disciplines / Tags Section -->
+        <section class="disciplines-section">
+            <h2 class="sub-heading text-center">OUR EXPERTISE & CAPABILITIES</h2>
+            
+            <div class="tags-wrapper">
+                <span class="tag-item">MECHANICAL</span>
+                <span class="tag-item">PIPING</span>
+                <span class="tag-item">HVAC</span>
+                <span class="tag-item">STRUCTURAL STEEL</span>
+                <span class="tag-item">FIRE FIGHTING</span>
+                <span class="tag-item">INSULATION</span>
+                <span class="tag-item">FABRICATION</span>
+                <span class="tag-item">INSTALLATION</span>
+                <span class="tag-item">COMMISSIONING</span>
+            </div>
+        </section>
+
+        <!-- Final Branding Footer Box -->
+        <div class="brand-closing-box">
+            <h2 class="brand-title">AHBS INTERNATIONAL</h2>
+            <p class="brand-tagline">INDUSTRIAL ENGINEERING SOLUTIONS & SERVICES</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>AHBS INTERNATIONAL | Industrial Engineering Solutions & Services</sp        </footer>
+
+    </div>
+
+    <script>
+        const contactForm = document.querySelector('.contact-form');
+        const sendMessageButton = document.querySelector('.send-message-button');
+
+        contactForm.addEventListener('submit', (event) => {
+            sendMessageButton.disabled = true;
+            sendMessageButton.classList.add('is-loading');
+            sendMessageButton.setAttribute('aria-busy', 'true');
+            sendMessageButton.querySelector('.button-label').textContent = 'SENDING...';
+        });
+    </script>
+
+    <script>
+        const pageNavigation = document.querySelector('.page-navigation');
+        window.addEventListener('scroll', () => {
+            pageNavigation.classList.toggle('is-scrolled', window.scrollY > 24);
+        }, { passive: true });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
