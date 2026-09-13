@@ -5,6 +5,7 @@
     );
 
     document.documentElement.classList.add('js-ready');
+    document.body.classList.add('page-ready');
 
     revealTargets.forEach((element, index) => {
         element.dataset.reveal = 'soft';
@@ -28,6 +29,43 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -36px' });
 
     revealTargets.forEach((element) => revealObserver.observe(element));
+
+    document.querySelectorAll('a[href]').forEach((link) => {
+        const url = new URL(link.href, window.location.href);
+        const isSamePage = url.origin === window.location.origin && url.pathname === window.location.pathname;
+
+        if (isSamePage && url.hash) {
+            link.addEventListener('click', (event) => {
+                const target = document.querySelector(url.hash);
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.history.pushState(null, '', url.hash);
+            });
+            return;
+        }
+
+        if (url.origin !== window.location.origin || link.target === '_blank' || link.hasAttribute('download')) {
+            return;
+        }
+
+        link.addEventListener('click', (event) => {
+            if (reduceMotion || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+                return;
+            }
+
+            event.preventDefault();
+            document.body.classList.add('page-leaving');
+
+            window.setTimeout(() => {
+                window.location.href = link.href;
+            }, 260);
+        });
+    });
 
     if (!window.matchMedia('(pointer: fine)').matches) {
         return;

@@ -127,6 +127,22 @@ body {
     backface-visibility: hidden;
 }
 
+.page-ready .container {
+    animation: pageReveal 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.page-leaving .container {
+    animation: pageExit 260ms ease-in both;
+    pointer-events: none;
+}
+
+@keyframes pageExit {
+    to {
+        opacity: 0;
+        transform: translateY(-12px) scale(0.99);
+    }
+}
+
 /* Header & Logo */
 .header {
     text-align: center;
@@ -570,6 +586,11 @@ body {
     display: flex;
     justify-content: center;
     padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Page 2 Specific Styles */
@@ -833,6 +854,7 @@ body {
     border-bottom: 1px solid #333333;
     border-radius: 0 4px 4px 0;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    will-change: transform;
 }
 
 .service-title {
@@ -1352,6 +1374,7 @@ body {
     margin-bottom: 20px;
     position: relative;
     transition: transform 0.25s ease;
+    will-change: transform;
 }
 
 .timeline-item:hover {
@@ -2084,7 +2107,24 @@ body::before {
     opacity: 1;
 }
 
+@media (hover: hover) {
+    .page-navigation a,
+    .contact-card,
+    .feature-card,
+    .why-card,
+    .service-item,
+    .industry-item,
+    .step-content,
+    .tag-item {
+        will-change: transform;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .js-ready [data-reveal='soft'] {
         opacity: 1;
         transform: none;
@@ -2094,6 +2134,11 @@ body::before {
     body::before,
     .cursor-glow {
         display: none;
+    }
+
+    .page-ready .container,
+    .page-leaving .container {
+        animation: none;
     }
 }
 
@@ -2328,4 +2373,3 @@ body::before {
         text-wrap: balance;
     }
 }
-
